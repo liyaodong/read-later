@@ -11,28 +11,41 @@
     <!-- endbuild -->
   </head>
   <body>
-    <label for="title">Title: </label>
-    <input id="title" type="text">
-    <label for="later-time">
-      Read it later
-    </label>
-    <select name="later-time" id="later-time">
-      <option value="">Tonight</option>
-      <option value="">Tomorow morning</option>
-      <option value="">This weekend</option>
-      <option value="">Other time</option>
-    </select>
-    <div id="stored-list">
+    <form id="new-item" class="form">
+      <div class="tac">
+        <button class="button">Save</button>
+      </div>
+    </form>
+    <div id="stored-list" class="result">
     </div>
-    <script type="text/template">
-      <div class="result__item">
+    <div class="template" id="template-add">
+      <div class="input-field">
+        <label for="title">Title: </label>
+        <input id="title" data-name="title" type="text" value="{{title}}">
+      </div>
+      <div class="input-field">
+        <label for="later-time">
+          Read it later
+        </label>
+        <select data-name="time" id="later-time">
+          <option value="{{date.first}}">Tonight</option>
+          <option value="{{date.second}}">Tomorow morning</option>
+          <option value="{{date.three}}">This weekend</option>
+        </select>
+      </div>
+    </div>
+    <div class="template" id="template-item">
+      <a class="result__item" href="{{url}}">
         <img src="{{icon}}" class="result__icon" />
         <h5 class="result__title">{{title}}</h5>
-        <span class="result__time">{{time}}</span>
-      </div>
-    </script>
+        <!-- <span class="result__time">{{time}}</span> -->
+      </a>
+    </div>
     <!-- build:js scripts/popup-vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/mustache.js/mustache.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
